@@ -1,0 +1,197 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+  --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
+
+  --color-paper: hsl(var(--paper));
+  --color-panel: hsl(var(--panel));
+  --color-ink: hsl(var(--ink));
+  --color-ink-2: hsl(var(--ink-2));
+  --color-ink-3: hsl(var(--ink-3));
+  --color-line: hsl(var(--line));
+  --color-accent: hsl(var(--accent));
+  --color-up: hsl(var(--up));
+  --color-down: hsl(var(--down));
+  --color-glow-1: hsl(var(--glow-1));
+  --color-glow-2: hsl(var(--glow-2));
+
+  --shadow-glow: 0 0 60px -12px hsl(var(--accent) / 0.35);
+}
+
+:root {
+  --paper: 220 30% 6%;
+  --panel: 220 25% 10%;
+  --ink: 210 20% 96%;
+  --ink-2: 215 14% 72%;
+  --ink-3: 215 10% 52%;
+  --line: 220 18% 18%;
+  --accent: 168 72% 48%;
+  --up: 152 68% 48%;
+  --down: 0 72% 58%;
+  --glow-1: 168 80% 42%;
+  --glow-2: 200 90% 50%;
+}
+
+.light {
+  --paper: 210 30% 97%;
+  --panel: 0 0% 100%;
+  --ink: 220 30% 10%;
+  --ink-2: 220 14% 38%;
+  --ink-3: 220 10% 55%;
+  --line: 220 16% 88%;
+  --accent: 168 65% 36%;
+  --up: 152 60% 36%;
+  --down: 0 65% 48%;
+  --glow-1: 168 70% 40%;
+  --glow-2: 200 80% 45%;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: hsl(var(--paper));
+  color: hsl(var(--ink));
+}
+
+.grain-layer {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.grid-overlay {
+  background-image:
+    linear-gradient(hsl(var(--line) / 0.35) 1px, transparent 1px),
+    linear-gradient(90deg, hsl(var(--line) / 0.35) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+.aurora-layer {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+}
+
+.aurora-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+}
+
+@keyframes aurora-drift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(3%, -2%) scale(1.05); }
+  66% { transform: translate(-2%, 3%) scale(0.97); }
+}
+
+.animate-aurora-drift {
+  animation: aurora-drift 22s ease-in-out infinite;
+}
+
+.surface-card {
+  border-radius: 1.5rem;
+  border: 1px solid hsl(var(--line));
+  background: hsl(var(--panel) / 0.65);
+  backdrop-filter: blur(12px);
+}
+
+.section-kicker {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: hsl(var(--accent));
+}
+
+.section-title {
+  font-size: 1.875rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: hsl(var(--ink));
+}
+
+@media (min-width: 768px) {
+  .section-title {
+    font-size: 2.25rem;
+  }
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--glow-2)));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.marquee-mask {
+  mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 40s linear infinite;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.tech-pill {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  border: 1px solid hsl(var(--line));
+  background: hsl(var(--panel) / 0.6);
+  padding: 0.25rem 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: hsl(var(--ink-2));
+}
+
+.phone-shell {
+  position: relative;
+  border-radius: 2.75rem;
+  border: 2px solid hsl(var(--line));
+  background: linear-gradient(145deg, hsl(var(--panel)), hsl(var(--paper)));
+  padding: 0.65rem;
+  box-shadow:
+    0 0 0 1px hsl(var(--line) / 0.5),
+    0 24px 48px -12px hsl(var(--accent) / 0.15),
+    0 8px 24px -8px rgba(0, 0, 0, 0.4);
+}
+
+.phone-notch {
+  position: absolute;
+  top: 0.85rem;
+  left: 50%;
+  z-index: 10;
+  height: 1.25rem;
+  width: 5.5rem;
+  transform: translateX(-50%);
+  border-radius: 9999px;
+  background: hsl(var(--paper));
+}
+
+.phone-screen {
+  position: relative;
+  height: 520px;
+  overflow: hidden;
+  border-radius: 2.1rem;
+  background: hsl(var(--paper));
+  cursor: grab;
+}
+
+.phone-screen:active {
+  cursor: grabbing;
+}
