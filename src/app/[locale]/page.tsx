@@ -7,6 +7,7 @@ import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { Projects } from "@/components/Projects";
+import { Showcase } from "@/components/Showcase";
 import { SkillsMarquee } from "@/components/SkillsMarquee";
 import { getMessages } from "@/lib/data";
 import { isValidLocale, type Locale } from "@/lib/i18n";
@@ -68,6 +69,7 @@ export default async function LocalePage({ params }: Props) {
           <Hero messages={messages} />
           <SkillsMarquee />
           <Projects messages={messages} />
+          <Showcase messages={messages} />
           <Experience locale={locale as Locale} messages={messages} />
           <Contact messages={messages} />
         </main>

@@ -12,7 +12,7 @@ type HeaderProps = {
   messages: Messages;
 };
 
-const navItems = ["home", "projects", "experience", "contact"] as const;
+const navItems = ["home", "projects", "showcase", "experience", "contact"] as const;
 
 export function Header({ locale, messages }: HeaderProps) {
   const pathname = usePathname();

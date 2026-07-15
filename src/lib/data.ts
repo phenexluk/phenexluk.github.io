@@ -9,6 +9,13 @@ export type Project = {
   tech: string[];
 };
 
+export type Showcase = {
+  id: string;
+  platform: "flutter" | "android";
+  tech: string[];
+  github: string;
+};
+
 export type Experience = {
   id: string;
   company: string;
@@ -37,6 +44,21 @@ export const projects: Project[] = [
   { id: "cga-esports", featured: false, platform: "native", tech: ["Android", "iOS", "Java", "Swift"] },
   { id: "zou-gwai", featured: false, platform: "android", tech: ["Android", "Java", "MVVM"] },
   { id: "viatris-vclub", featured: false, platform: "hybrid", tech: ["React Native", "Expo"] },
+];
+
+export const showcases: Showcase[] = [
+  {
+    id: "hk-bus-flutter",
+    platform: "flutter",
+    tech: ["Flutter", "Dart", "Provider", "GPS", "Maps", "REST"],
+    github: "https://github.com/phenexluk/HongKong-Bus-checker-Flutter",
+  },
+  {
+    id: "hk-weather-android",
+    platform: "android",
+    tech: ["Kotlin", "Jetpack Compose", "MVVM", "Glance Widget", "HKO API"],
+    github: "https://github.com/phenexluk/HongKongWeather-Kotlin-Android",
+  },
 ];
 
 export const experiences: Experience[] = [
@@ -170,6 +192,7 @@ export type Messages = {
   nav: {
     home: string;
     projects: string;
+    showcase: string;
     experience: string;
     contact: string;
     role: string;
@@ -212,6 +235,14 @@ export type Messages = {
       { title: string; description: string; outcome: string }
     >;
   };
+  showcase: {
+    kicker: string;
+    title: string;
+    subtitle: string;
+    viewOnGithub: string;
+    platforms: Record<"flutter" | "android", string>;
+    items: Record<string, { title: string; description: string; highlights: string[] }>;
+  };
   experience: {
     kicker: string;
     title: string;
@@ -247,6 +278,7 @@ const en: Messages = {
   nav: {
     home: "Home",
     projects: "Projects",
+    showcase: "Showcase",
     experience: "Experience",
     contact: "Contact",
     role: "Lead Mobile Developer",
@@ -354,6 +386,39 @@ const en: Messages = {
       },
     },
   },
+  showcase: {
+    kicker: "GitHub Showcase",
+    title: "Open-source apps built end-to-end.",
+    subtitle:
+      "Fully developed personal showcases — Flutter and native Android — using Hong Kong open data APIs.",
+    viewOnGithub: "View on GitHub",
+    platforms: {
+      flutter: "Flutter",
+      android: "Android / Kotlin",
+    },
+    items: {
+      "hk-bus-flutter": {
+        title: "Hong Kong Bus Checker",
+        description:
+          "Flutter + Dart client for KMB bus ETA lookup — GPS nearby routes, KMB-style route search, animated map with stop ETAs, and bilingual UI.",
+        highlights: [
+          "GPS nearby discovery with live remaining-time ETA",
+          "KMB-style numpad search with smart key filtering",
+          "Route detail map with CSDI tiles + expandable stop panels",
+        ],
+      },
+      "hk-weather-android": {
+        title: "Hong Kong Weather",
+        description:
+          "Kotlin Android showcase powered by the HKO Open Data API — Compose UI, MVVM, home screen widget, and a station temperature map.",
+        highlights: [
+          "Jetpack Compose weather UI with location-aware readings",
+          "Glance home screen widget with WorkManager refresh",
+          "OSMDroid map overlay across HKO automatic weather stations",
+        ],
+      },
+    },
+  },
   experience: {
     kicker: "Work Experience",
     title: "A decade of mobile engineering across Hong Kong's top agencies and start-ups.",
@@ -435,6 +500,7 @@ const zh: Messages = {
   nav: {
     home: "首頁",
     projects: "項目",
+    showcase: "展示",
     experience: "經歷",
     contact: "聯絡",
     role: "資深流動開發主管",
@@ -534,6 +600,38 @@ const zh: Messages = {
         title: "Viatris HK — Vclub",
         description: "以 React Native 及 Expo 為香港市場構建醫療保健會員應用的核心貢獻者。",
         outcome: "交付合規且用戶友好的健康會員體驗。",
+      },
+    },
+  },
+  showcase: {
+    kicker: "GitHub 展示",
+    title: "端到端構建的開源應用。",
+    subtitle: "以 Flutter 及原生 Android 完整開發的個人展示項目，連接香港開放數據 API。",
+    viewOnGithub: "在 GitHub 查看",
+    platforms: {
+      flutter: "Flutter",
+      android: "Android / Kotlin",
+    },
+    items: {
+      "hk-bus-flutter": {
+        title: "香港巴士查詢",
+        description:
+          "以 Flutter + Dart 構建的九巴 ETA 查詢應用 — GPS 附近路線、九巴風格路線搜尋、動畫地圖站點 ETA，以及雙語介面。",
+        highlights: [
+          "GPS 附近路線發現與剩餘時間 ETA",
+          "九巴風格數字鍵盤搜尋，智能按鍵啟用",
+          "路線詳情地圖（CSDI 圖磚）與可展開站點面板",
+        ],
+      },
+      "hk-weather-android": {
+        title: "香港天氣",
+        description:
+          "以 Kotlin Android 及香港天文台開放數據 API 構建的展示應用 — Compose UI、MVVM、主畫面 Widget 及測站溫度地圖。",
+        highlights: [
+          "Jetpack Compose 天氣介面，按位置顯示最近測站讀數",
+          "Glance 主畫面 Widget，配合 WorkManager 定時更新",
+          "OSMDroid 地圖覆蓋香港天文台自動氣象站溫度",
+        ],
       },
     },
   },
