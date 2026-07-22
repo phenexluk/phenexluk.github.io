@@ -9,9 +9,11 @@ export type Project = {
   tech: string[];
 };
 
+export type ShowcasePlatform = "flutter" | "android" | "ios";
+
 export type Showcase = {
   id: string;
-  platform: "flutter" | "android";
+  platform: ShowcasePlatform;
   tech: string[];
   github: string;
 };
@@ -58,6 +60,12 @@ export const showcases: Showcase[] = [
     platform: "android",
     tech: ["Kotlin", "Jetpack Compose", "MVVM", "Glance Widget", "HKO API"],
     github: "https://github.com/phenexluk/HongKongWeather-Kotlin-Android",
+  },
+  {
+    id: "hk-road-ios",
+    platform: "ios",
+    tech: ["Swift", "SwiftUI", "MapKit", "async/await", "TD Open Data"],
+    github: "https://github.com/phenexluk/HongKongRoadSitutation",
   },
 ];
 
@@ -240,7 +248,7 @@ export type Messages = {
     title: string;
     subtitle: string;
     viewOnGithub: string;
-    platforms: Record<"flutter" | "android", string>;
+    platforms: Record<ShowcasePlatform, string>;
     items: Record<string, { title: string; description: string; highlights: string[] }>;
   };
   experience: {
@@ -390,11 +398,12 @@ const en: Messages = {
     kicker: "GitHub Showcase",
     title: "Open-source apps built end-to-end.",
     subtitle:
-      "Fully developed personal showcases — Flutter and native Android — using Hong Kong open data APIs.",
+      "Fully developed personal showcases — Flutter, native Android, and iOS — using Hong Kong open data APIs.",
     viewOnGithub: "View on GitHub",
     platforms: {
       flutter: "Flutter",
       android: "Android / Kotlin",
+      ios: "iOS / Swift",
     },
     items: {
       "hk-bus-flutter": {
@@ -415,6 +424,16 @@ const en: Messages = {
           "Jetpack Compose weather UI with location-aware readings",
           "Glance home screen widget with WorkManager refresh",
           "OSMDroid map overlay across HKO automatic weather stations",
+        ],
+      },
+      "hk-road-ios": {
+        title: "Hong Kong Road Situation",
+        description:
+          "SwiftUI iOS showcase for Transport Department strategic road traffic — MapKit, detectors, road network segments, and live processed speeds.",
+        highlights: [
+          "Map + list with road segments and traffic detectors",
+          "Tap a segment for polyline + processed speed card",
+          "Location jump to nearby strategic segment with filters & search",
         ],
       },
     },
@@ -606,11 +625,12 @@ const zh: Messages = {
   showcase: {
     kicker: "GitHub 展示",
     title: "端到端構建的開源應用。",
-    subtitle: "以 Flutter 及原生 Android 完整開發的個人展示項目，連接香港開放數據 API。",
+    subtitle: "以 Flutter、原生 Android 及 iOS 完整開發的個人展示項目，連接香港開放數據 API。",
     viewOnGithub: "在 GitHub 查看",
     platforms: {
       flutter: "Flutter",
       android: "Android / Kotlin",
+      ios: "iOS / Swift",
     },
     items: {
       "hk-bus-flutter": {
@@ -631,6 +651,16 @@ const zh: Messages = {
           "Jetpack Compose 天氣介面，按位置顯示最近測站讀數",
           "Glance 主畫面 Widget，配合 WorkManager 定時更新",
           "OSMDroid 地圖覆蓋香港天文台自動氣象站溫度",
+        ],
+      },
+      "hk-road-ios": {
+        title: "香港道路狀況",
+        description:
+          "以 SwiftUI 構建的 iOS 展示應用 — 運輸署主要道路交通數據、MapKit、檢測器、路網路段及實時處理車速。",
+        highlights: [
+          "地圖與列表：路網路段及交通檢測器",
+          "點選路段顯示折線與處理車速卡片",
+          "定位跳至附近策略路段，支援篩選與搜尋",
         ],
       },
     },

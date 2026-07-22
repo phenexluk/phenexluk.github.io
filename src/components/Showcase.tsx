@@ -11,11 +11,13 @@ type ShowcaseProps = {
 const PLATFORM_GLYPH: Record<string, string> = {
   "hk-bus-flutter": "BUS",
   "hk-weather-android": "WX",
+  "hk-road-ios": "RD",
 };
 
 const PLATFORM_GRADIENT: Record<string, string> = {
   "hk-bus-flutter": "from-sky-950 via-blue-900 to-indigo-950",
   "hk-weather-android": "from-violet-950 via-purple-900 to-fuchsia-950",
+  "hk-road-ios": "from-emerald-950 via-teal-900 to-slate-950",
 };
 
 export function Showcase({ messages }: ShowcaseProps) {
@@ -28,7 +30,7 @@ export function Showcase({ messages }: ShowcaseProps) {
         <h2 className="mt-4 section-title">{s.title}</h2>
         <p className="mt-4 max-w-2xl text-base leading-7 text-ink-2">{s.subtitle}</p>
 
-        <div className="mt-10 grid gap-6 lg:grid-cols-2">
+        <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {showcases.map((item, i) => {
             const copy = s.items[item.id];
             return (
